@@ -100,11 +100,11 @@ def hailstone(n):
     count = 1
     while n != 1:
         if n % 2 == 0:
-            n = int(n / 2)
+            n = n // 2
             print(n)
             count += 1
         else:
-            n = int(3 * n + 1)
+            n = 3 * n + 1
             print(n)
             count += 1
     return count
