@@ -1,12 +1,18 @@
 from operator import add, mul
+from this import s
+from tkinter import S
 
-square = lambda x: x * x
 
-identity = lambda x: x
+def square(x): return x * x
 
-triple = lambda x: 3 * x
 
-increment = lambda x: x + 1
+def identity(x): return x
+
+
+def triple(x): return 3 * x
+
+
+def increment(x): return x + 1
 
 
 HW_SOURCE_FILE = __file__
@@ -31,7 +37,11 @@ def product(n, term):
     >>> product(3, triple)    # 1*3 * 2*3 * 3*3
     162
     """
-    "*** YOUR CODE HERE ***"
+    res, i = 1, 1
+    while i <= n:
+        res *= term(i)
+        i += 1
+    return res
 
 
 def accumulate(merger, start, n, term):
@@ -58,7 +68,11 @@ def accumulate(merger, start, n, term):
     >>> accumulate(lambda x, y: (x + y) % 17, 19, 20, square)
     16
     """
-    "*** YOUR CODE HERE ***"
+    res, i = start, 1
+    while i <= n:
+        res = merger(res, term(i))
+        i += 1
+    return res
 
 
 def summation_using_accumulate(n, term):
@@ -75,7 +89,7 @@ def summation_using_accumulate(n, term):
     >>> [type(x).__name__ for x in ast.parse(inspect.getsource(summation_using_accumulate)).body[0].body]
     ['Expr', 'Return']
     """
-    "*** YOUR CODE HERE ***"
+    return accumulate(add, 0, n, term)
 
 
 def product_using_accumulate(n, term):
@@ -92,7 +106,7 @@ def product_using_accumulate(n, term):
     >>> [type(x).__name__ for x in ast.parse(inspect.getsource(product_using_accumulate)).body[0].body]
     ['Expr', 'Return']
     """
-    "*** YOUR CODE HERE ***"
+    return accumulate(mul, 1, n, term)
 
 
 def filtered_accumulate(merger, start, cond, n, term):
@@ -119,7 +133,9 @@ def filtered_accumulate(merger, start, cond, n, term):
     True
     """
     def merge_if(x, y):
-        "*** YOUR CODE HERE ***"
+        if cond(y):
+            return merger(x, y)
+        return x
     return accumulate(merge_if, start, n, term)
 
 
@@ -153,4 +169,15 @@ def funception(func_a, start):
     >>> func_b5 = funception(func_a, -1)
     >>> func_b5(4)    # Returns None since start < 0
     """
-    "*** YOUR CODE HERE ***"
+    def func_b(stop):
+        if start < 0:
+            return None
+        elif start > stop:
+            return func_a(start)
+        else:
+            res, i = 1, start
+            while i < stop:
+                res *= func_a(i)
+                i += 1
+            return res
+    return func_b
