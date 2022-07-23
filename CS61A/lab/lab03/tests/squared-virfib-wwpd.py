@@ -12,46 +12,38 @@ test = {
           ...         return n
           ...     return (virfib_sq(n - 1) + virfib_sq(n - 2)) ** 2
           >>> r0 = virfib_sq(0)
-          f34cd05f0e141093f7ce0bc202fd4972
-          # locked
+          0
           >>> r1 = virfib_sq(1)
-          71a5e7aa11e66d4d6ce4be8fda1e18ec
-          # locked
+          1
           >>> r2 = virfib_sq(2)
-          73a9752b0761167119f7a8667ed17719
-          71a5e7aa11e66d4d6ce4be8fda1e18ec
-          f34cd05f0e141093f7ce0bc202fd4972
-          # locked
+          2
+          1
+          0
           >>> r3 = virfib_sq(3)
-          c66c489c94f153ccc42909baf6da3202
-          73a9752b0761167119f7a8667ed17719
-          71a5e7aa11e66d4d6ce4be8fda1e18ec
-          f34cd05f0e141093f7ce0bc202fd4972
-          71a5e7aa11e66d4d6ce4be8fda1e18ec
-          # locked
+          3
+          2
+          1
+          0
+          1
           >>> r3
-          ad741b000d1cc7ef3beaaf650d8f371b
-          # locked
+          4
           >>> (r1 + r2) ** 2
-          ad741b000d1cc7ef3beaaf650d8f371b
-          # locked
+          4
           >>> r4 = virfib_sq(4)
-          ad741b000d1cc7ef3beaaf650d8f371b
-          c66c489c94f153ccc42909baf6da3202
-          73a9752b0761167119f7a8667ed17719
-          71a5e7aa11e66d4d6ce4be8fda1e18ec
-          f34cd05f0e141093f7ce0bc202fd4972
-          71a5e7aa11e66d4d6ce4be8fda1e18ec
-          73a9752b0761167119f7a8667ed17719
-          71a5e7aa11e66d4d6ce4be8fda1e18ec
-          f34cd05f0e141093f7ce0bc202fd4972
-          # locked
+          4
+          3
+          2
+          1
+          0
+          1
+          2
+          1
+          0
           >>> r4
-          e0a719ebba1ad1d00bf46f8e22acf49e
-          # locked
+          25
           """,
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'multiline': False
         }
       ],
