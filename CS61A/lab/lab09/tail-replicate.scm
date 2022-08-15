@@ -1,5 +1,5 @@
 (define (tail-replicate x n)
   ; BEGIN
-  'replace-this-line
+  (define (helper n cur) (if (= n 0) cur (helper (- n 1) (cons x cur)))) (helper n '())
   ; END
 )
