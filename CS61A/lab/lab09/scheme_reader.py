@@ -44,11 +44,11 @@ def scheme_read(src):
     val = src.pop_first()  # Get and remove the first token
     if val == 'nil':
         # BEGIN PROBLEM 2
-        "*** YOUR CODE HERE ***"
+        return nil
         # END PROBLEM 2
     elif val == '(':
         # BEGIN PROBLEM 2
-        "*** YOUR CODE HERE ***"
+        return read_tail(src)
         # END PROBLEM 2
     elif val == "'":
         # BEGIN PROBLEM 3
@@ -73,11 +73,14 @@ def read_tail(src):
             raise SyntaxError('unexpected end of file')
         elif src.current() == ')':
             # BEGIN PROBLEM 2
-            "*** YOUR CODE HERE ***"
+            src.pop_first()
+            return nil
             # END PROBLEM 2
         else:
             # BEGIN PROBLEM 2
-            "*** YOUR CODE HERE ***"
+            a = scheme_read(src)
+            b = read_tail(src)
+            return Pair(a, b)
             # END PROBLEM 2
     except EOFError:
         raise SyntaxError('unexpected end of file')
@@ -106,7 +109,8 @@ def read_line(line):
     #     buf.pop_first()
     result = scheme_read(buf)
     if buf.more_on_line():
-        raise SyntaxError("read_line's argument can only be a single element, but received multiple")
+        raise SyntaxError(
+            "read_line's argument can only be a single element, but received multiple")
     return result
 
 # Interactive loop

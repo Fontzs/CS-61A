@@ -40,17 +40,13 @@ test = {
           >>> tokens = tokenize_lines(["(+ 1 ", "(23 4)) ("])
           >>> src = Buffer(tokens)
           >>> src.current()
-          a89feb44db49f242b94c0375cbb166f2
-          # locked
+          '('
           >>> src.pop_first()
-          a89feb44db49f242b94c0375cbb166f2
-          # locked
+          '('
           >>> src.current()
-          211dd910bb61b89e684d311ef1cf3173
-          # locked
+          '+'
           >>> src.pop_first()
-          211dd910bb61b89e684d311ef1cf3173
-          # locked
+          '+'
           >>> src.pop_first()
           d912fc844d1dbaeea8a84b3ec8b315bc
           # locked
