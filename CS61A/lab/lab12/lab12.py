@@ -1,9 +1,10 @@
+from asyncio.constants import DEBUG_STACK_DEPTH
 import re
 
 
 def link_pop(lnk, index=-1):
     '''Implement the pop method for a Linked List.
-    
+
     >>> lnk = Link(1, Link(2, Link(3, Link(4, Link(5)))))
     >>> removed = link_pop(lnk)
     >>> print(removed)
@@ -22,16 +23,16 @@ def link_pop(lnk, index=-1):
     <1>
     '''
     if index == -1:
-        while ___________________:
-            ___________________
-        removed = ___________________
-        ___________________
+        while lnk.rest.rest != Link.empty:
+            lnk = lnk.rest
+        removed = lnk.rest.first
+        lnk.rest = Link.empty
     else:
-        while ___________________:
-            ___________________
-            ___________________
-        removed = ___________________
-        ___________________
+        while index > 1:
+            lnk = lnk.rest
+            index -= 1
+        removed = lnk.rest.first
+        lnk.rest = lnk.rest.rest
     return removed
 
 
@@ -51,14 +52,14 @@ def prune_min(t):
     >>> t3
     Tree(6, [Tree(3, [Tree(1)])])
     """
-    if _____________:
+    if t.branches == []:
         return
-    _____________
-    _____________
-    if _____________:
-        _____________
+    prune_min(t.branches[0])
+    prune_min(t.branches[1])
+    if t.branches[0].label < t.branches[1].label:
+        t.branches.pop(1)
     else:
-        _____________
+        t.branches.pop(0)
     return  # return statement to block alternate from running
 
 
@@ -84,7 +85,19 @@ def repeated(t, k):
     2
     """
     assert k > 1
-    "*** YOUR CODE HERE ***"
+    pre = None
+    cur, count = 0, 0
+
+    while t:
+        cur = next(t)
+        if cur != pre:
+            count = 1
+        else:
+            count += 1
+        if count == k:
+            return cur
+        pre = cur
+    return None
 
 
 def add_trees(t1, t2):
@@ -122,18 +135,18 @@ def add_trees(t1, t2):
         5
       5
     """
-    if _____________:
-        return _____________
-    if _____________:
-        return _____________
-    new_label = _____________
-    t1_branches, t2_branches = _____________
-    length_t1, length_t2 = _____________
-    if _____________:
-        _____________
-    elif _____________:
-        _____________
-    return _____________
+    if not t1:
+        return t2
+    if not t2:
+        return t1
+    new_label = t1.label + t2.label
+    t1_branches, t2_branches = list(t1.branches), list(t2.branches)
+    length_t1, length_t2 = len(t1_branches), len(t2_branches)
+    if length_t1 < length_t2:
+        t1_branches += [None for _ in range(length_t1, length_t2)]
+    elif length_t1 > length_t2:
+        t2_branches += [None for _ in range(length_t2, length_t1)]
+    return Tree(new_label, [add_trees(b1, b2) for b1, b2 in zip(t1_branches, t2_branches)])
 
 
 def address_oneline(text):
@@ -154,10 +167,10 @@ def address_oneline(text):
     >>> address_oneline("790 lowercase St")
     False
     """
-    block_number = r'___'
-    cardinal_dir = r'___'  # whitespace is important!
-    street = r'___'
-    type_abbr = r'___'
+    block_number = r'\d{3,5}'
+    cardinal_dir = r'([NEWS] )?'  # whitespace is important!
+    street = r'([A-Z][A-Za-z]+ )+'
+    type_abbr = r'[A-Z][a-z]{1,4}\b'
     street_name = f"{cardinal_dir}{street}{type_abbr}"
     return bool(re.search(f"{block_number} {street_name}", text))
 
@@ -219,10 +232,18 @@ class Player:
         self.popularity = 100
 
     def debate(self, other):
-        "*** YOUR CODE HERE ***"
+        probability = max(0.1, self.popularity /
+                          (self.popularity + other.popularity))
+        num = random()
+        if num < probability:
+            self.popularity += 50
+        else:
+            self.popularity -= 50
 
     def speech(self, other):
-        "*** YOUR CODE HERE ***"
+        self.votes += self.popularity // 10
+        self.popularity += self.popularity // 10
+        other.popularity -= other.popularity // 10
 
     def choose(self, other):
         return self.speech
@@ -246,17 +267,30 @@ class Game:
 
     def play(self):
         while not self.game_over():
-            "*** YOUR CODE HERE ***"
+            if self.turn % 2 == 0:
+                self.p1.choose(self.p2)(self.p2)
+            else:
+                self.p2.choose(self.p1)(self.p1)
+            self.turn += 1
         return self.winner()
+
+    # higher-order function, choose method return a funtion which need a parameter
+    # I forgot the fact, and it confused me when I saw two same paramters
 
     def game_over(self):
         return max(self.p1.votes, self.p2.votes) >= 50 or self.turn >= 10
 
     def winner(self):
-        "*** YOUR CODE HERE ***"
-
+        if self.p1.votes > self.p2.votes:
+            return self.p1
+        elif self.p1.votes < self.p2.votes:
+            return self.p2
+        else:
+            return None
 
 # Phase 3: New Players
+
+
 class AggressivePlayer(Player):
     """
     >>> random = make_test_random()
@@ -269,7 +303,10 @@ class AggressivePlayer(Player):
     """
 
     def choose(self, other):
-        "*** YOUR CODE HERE ***"
+        if self.popularity <= other.popularity:
+            return self.debate
+        else:
+            return self.speech
 
 
 class CautiousPlayer(Player):
@@ -286,7 +323,10 @@ class CautiousPlayer(Player):
     """
 
     def choose(self, other):
-        "*** YOUR CODE HERE ***"
+        if self.popularity == 0:
+            return self.debate
+        else:
+            return self.speech
 
 
 def intersection(lst_of_lsts):
@@ -307,7 +347,22 @@ def intersection(lst_of_lsts):
     [3]
     """
     elements = []
-    "*** YOUR CODE HERE ***"
+    bitch = []
+    for i in lst_of_lsts:
+        for j in i:
+            if j not in bitch:
+                bitch.append(j)
+
+    for e in bitch:
+        exitence = True
+        for k in lst_of_lsts:
+            if e not in k:
+                exitence = False
+                break
+
+        if e not in elements and exitence:
+            elements.append(e)
+
     return elements
 
 
@@ -325,8 +380,14 @@ def deck(suits, ranks):
     >>> deck(['S', 'C'], [])
     []
     """
-    "*** YOUR CODE HERE ***"
-    return ______
+    lst = []
+    if not suits or not ranks:
+        return []
+    for i in suits:
+        for j in ranks:
+            lst.append([i, j])
+
+    return lst
 
 
 class Link:

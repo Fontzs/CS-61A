@@ -9,20 +9,37 @@
 (define (make-vehicle model year previous-owners)
   (cons model (cons year previous-owners)))
 
-(define (get-model vehicle) 'YOUR-CODE-HERE)
+(define (get-model vehicle) (car vehicle))
 
-(define (get-year vehicle) 'YOUR-CODE-HERE)
+(define (get-year vehicle) (car (cdr vehicle)))
 
-(define (get-owners vehicle) 'YOUR-CODE-HERE)
+(define (get-owners vehicle) (cdr (cdr vehicle)))
 
 (define (older-vehicle vehicle1 vehicle2)
-  'YOUR-CODE-HERE)
+  (if (< (get-year vehicle1) (get-year vehicle2)) (get-model vehicle1)
+  (get-model vehicle2)
+  )
+)
 
-(define (new-owner vehicle owner) 'YOUR-CODE-HERE)
+(define (new-owner vehicle owner) 
+  (cons (get-model vehicle) 
+    (cons (get-year vehicle) 
+      (cons owner 
+        (get-owners vehicle))))
 
-(define (owners-names vehicle) 'YOUR-CODE-HERE)
 
-(define (split-at lst n) 'YOUR-CODE-HERE)
+)
+
+(define (owners-names vehicle) 
+  (map get-name (get-owners vehicle))
+)
+
+(define (split-at lst n) 
+(cond ((= n 0) (cons nil lst))
+((null? lst) (cons lst nil))
+(else (let ((rec (split-at (cdr lst) (- n 1))))
+        (cons (cons (car lst) (car rec)) (cdr rec)))))
+)
 
 ; Tree Abstraction
 ; Constructs tree given label and list of branches
@@ -38,4 +55,9 @@
 ; Returns #t if t is a leaf, #f otherwise
 (define (is-leaf t) (null? (branches t)))
 
-(define (filter-odd t) 'YOUR-CODE-HERE)
+(define (filter-odd t) 
+(cond ((null? (label t)) (nil))
+  ((even? (label t)) (tree nil (map filter-odd (branches t))))
+  (else (tree (label t) (map filter-odd (branches t))))
+)
+)
