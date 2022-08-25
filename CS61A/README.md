@@ -21,7 +21,7 @@ The following solutions help me a lot when I got stuck. 🎉
 
 - [x] [Lab 01: Variables and Functions, Control](https://github.com/Fontzs/61-ABC/tree/master/CS61A/lab/lab01)
 - [x] [Lab 02: Higher-Order Functions, Environment Diagrams](https://github.com/Fontzs/61-ABC/tree/master/CS61A/lab/lab02)
-- [x] [ Lab 03: Recursion, Tree Recursion](https://github.com/Fontzs/61-ABC/tree/master/CS61A/lab/lab02)
+- [x] [ Lab 03: Recursion, Tree Recursion](https://github.com/Fontzs/61-ABC/tree/master/CS61A/lab/lab03)
 - [x] [Lab 04: Sequences, Mutability, Object-Oriented Programming](https://github.com/Fontzs/61-ABC/tree/master/CS61A/lab/lab04)
 - [x] [Lab 05: Inheritance, Midterm Review](https://github.com/Fontzs/61-ABC/tree/master/CS61A/lab/lab05)
 - [x] [ Lab 06: Iterators, Generators](https://github.com/Fontzs/61-ABC/tree/master/CS61A/lab/lab06) 
