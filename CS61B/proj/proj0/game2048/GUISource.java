@@ -30,25 +30,16 @@ class GUISource implements InputSource {
         }
     }
 
-    @Override
     /** Return and log which direction arrow was pressed. */
+    @Override
     public String getKey() {
         String command = _source.readKey();
         switch (command) {
-            case "↑" :
-                command = "Up";
-                break;
-            case "→" :
-                command = "Right";
-                break;
-            case "↓" :
-                command = "Down";
-                break;
-            case "←" :
-                command = "Left";
-                break;
-            default :
-                break;
+        case "↑" -> command = "Up";
+        case "→" -> command = "Right";
+        case "↓" -> command = "Down";
+        case "←" -> command = "Left";
+        default -> {}
         }
 
         String logLine = String.format("K %s%n", command);
@@ -65,10 +56,10 @@ class GUISource implements InputSource {
         return command;
     }
 
+    /** Return a randomly positioned tile with either value of 2 with
+     * probability _probOf2 or a value of 4 with probability 1 - _probOf2 in a
+     * board with size SIZE. */
     @Override
-     /** Return a randomly positioned tile with either value of 2 with 
-      * probability _probOf2 or a value of 4 with probability 1 - _probOf2 in a
-      * board with size SIZE. */
     public Tile getNewTile(int size) {
         int c = _randomSource.nextInt(size), r = _randomSource.nextInt(size);
         int v = _randomSource.nextDouble() <= _probOf2 ? 2 : 4;
@@ -79,12 +70,14 @@ class GUISource implements InputSource {
     }
 
     /** Input source. */
-    private GUI _source;
+    private final GUI _source;
+
     /** Random source for Tiles. */
-    private Random _randomSource;
+    private final Random _randomSource;
+
     /** Probabilty that value of new Tile is 2 rather than 4. */
-    private double _probOf2;
+    private final double _probOf2;
+
     /** The FileWriter to log inputs to (null if no logging required). */
     private FileWriter _logFileWriter;
-
 }

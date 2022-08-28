@@ -32,10 +32,10 @@ public enum Side {
      *  column of the lower-left square when sitting at the board facing
      *  towards this Side. */
     Side(int col0, int row0, int dcol, int drow) {
-        this.row0 = row0;
-        this.col0 = col0;
-        this.drow = drow;
-        this.dcol = dcol;
+        this._row0 = row0;
+        this._col0 = col0;
+        this._drow = drow;
+        this._dcol = dcol;
     }
 
     /** Returns the side opposite of side S. */
@@ -54,17 +54,16 @@ public enum Side {
     /** Return the standard column number for square (C, R) on a board
      *  of size SIZE oriented with this Side on top. */
     public int col(int c, int r, int size) {
-        return col0 * (size - 1) + c * drow + r * dcol;
+        return _col0 * (size - 1) + c * _drow + r * _dcol;
     }
 
     /** Return the standard row number for square (C, R) on a board
      *  of size SIZE oriented with this Side on top. */
     public int row(int c, int r, int size) {
-        return row0 * (size - 1) - c * dcol + r * drow;
+        return _row0 * (size - 1) - c * _dcol + r * _drow;
     }
 
     /** Parameters describing this Side, as documented in the comment at the
      *  start of this class. */
-    private int row0, col0, drow, dcol;
-
-};
+    private final int _row0, _col0, _drow, _dcol;
+}

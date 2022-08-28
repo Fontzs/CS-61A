@@ -1,7 +1,9 @@
 package game2048;
+
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /** Tests the atLeastOneMoveExists() static method of Model.
  *
@@ -15,11 +17,12 @@ public class TestAtLeastOneMoveExists {
     /** The Board that we'll be testing on. */
     static Board b;
 
-    @Test
     /** Tests a board with some empty space.
      *
      *  Note that this isn't a comprehensive test for empty space. For that,
-     * see the TestEmptySpace class. */
+     * see the TestEmptySpace class.
+     */
+    @Test
     public void testEmptySpace() {
         int[][] rawVals = new int[][] {
                 {0, 0, 4, 0},
@@ -28,14 +31,14 @@ public class TestAtLeastOneMoveExists {
                 {0, 0, 0, 0},
         };
 
-        b = new Board(rawVals, 0);
+        b = new Board(rawVals);
         assertTrue("A tilt in any direction will change the board "
                         + "(there is empty space on the board)\n" + b,
                 Model.atLeastOneMoveExists(b));
     }
 
-    @Test
     /** Tests a board where a tilt in any direction would cause a change. */
+    @Test
     public void testAnyDir() {
         int[][] rawVals = new int[][] {
                 {2, 4, 2, 2},
@@ -44,14 +47,14 @@ public class TestAtLeastOneMoveExists {
                 {4, 2, 4, 2},
         };
 
-        b = new Board(rawVals, 0);
+        b = new Board(rawVals);
         assertTrue("A tilt in any direction will change the board\n"
                         + b,
                 Model.atLeastOneMoveExists(b));
     }
 
-    @Test
     /** Tests a board where a tilt left or right would cause a change. */
+    @Test
     public void testLeftOrRight() {
         int[][] rawVals = new int[][] {
                 {2, 4, 2, 4},
@@ -60,13 +63,13 @@ public class TestAtLeastOneMoveExists {
                 {4, 8, 4, 2},
         };
 
-        b = new Board(rawVals, 0);
+        b = new Board(rawVals);
         assertTrue("A tilt left or right will change the board\n" + b,
                 Model.atLeastOneMoveExists(b));
     }
 
-    @Test
     /** Tests a board where a tilt up or down would cause a change. */
+    @Test
     public void testUpOrDown() {
         int[][] rawVals = new int[][] {
                 {2, 4, 2, 4},
@@ -75,16 +78,17 @@ public class TestAtLeastOneMoveExists {
                 {4, 8, 4, 2},
         };
 
-        b = new Board(rawVals, 0);
+        b = new Board(rawVals);
         assertTrue("A tilt up or down will change the board\n" + b,
                 Model.atLeastOneMoveExists(b));
     }
 
-    @Test
     /** Tests a board where some move exists (max tile is on the board).
      *
      * While having the max tile on the board does mean the game is over, it
-     * should not be handled in this method. */
+     * should not be handled in this method.
+     */
+    @Test
     public void testMoveExistsMaxPiece() {
         int[][] rawVals = new int[][] {
                 {2, 4, 2, 4},
@@ -93,14 +97,14 @@ public class TestAtLeastOneMoveExists {
                 {4, 2, 4, 2048},
         };
 
-        b = new Board(rawVals, 0);
+        b = new Board(rawVals);
         assertTrue("A tilt in any direction will change the board\n"
                         + b,
                 Model.atLeastOneMoveExists(b));
     }
 
-    @Test
     /** Tests a board where no move exists. */
+    @Test
     public void testNoMoveExists1() {
         int[][] rawVals = new int[][] {
                 {2, 4, 2, 4},
@@ -109,13 +113,13 @@ public class TestAtLeastOneMoveExists {
                 {4, 2, 4, 2},
         };
 
-        b = new Board(rawVals, 0);
+        b = new Board(rawVals);
         assertFalse("No move exists\n" + b,
                 Model.atLeastOneMoveExists(b));
     }
 
-    @Test
     /** Tests a board where no move exists. */
+    @Test
     public void testNoMoveExists2() {
         int[][] rawVals = new int[][] {
                 {2, 1024, 2, 4},
@@ -124,13 +128,13 @@ public class TestAtLeastOneMoveExists {
                 {512, 2, 4, 2},
         };
 
-        b = new Board(rawVals, 0);
+        b = new Board(rawVals);
         assertFalse("No move exists\n" + b,
                 Model.atLeastOneMoveExists(b));
     }
 
-    @Test
     /** Tests a board where no move exists. */
+    @Test
     public void testNoMoveExists3() {
         int[][] rawVals = new int[][] {
                 {8, 4, 2, 32},
@@ -139,13 +143,13 @@ public class TestAtLeastOneMoveExists {
                 {4, 64, 4, 64},
         };
 
-        b = new Board(rawVals, 0);
+        b = new Board(rawVals);
         assertFalse("No move exists\n" + b,
                 Model.atLeastOneMoveExists(b));
     }
 
-    @Test
     /** Tests a board where no move exists. */
+    @Test
     public void testNoMoveExists4() {
         int[][] rawVals = new int[][] {
                 {2, 4, 2, 32},
@@ -154,13 +158,13 @@ public class TestAtLeastOneMoveExists {
                 {4, 2, 4, 2},
         };
 
-        b = new Board(rawVals, 0);
+        b = new Board(rawVals);
         assertFalse("No move exists\n" + b,
                 Model.atLeastOneMoveExists(b));
     }
 
-    @Test
     /** Tests a board where no move exists. */
+    @Test
     public void testNoMoveExists5() {
         int[][] rawVals = new int[][] {
                 {8, 16, 2, 32},
@@ -169,7 +173,7 @@ public class TestAtLeastOneMoveExists {
                 {1024, 8, 4, 2},
         };
 
-        b = new Board(rawVals, 0);
+        b = new Board(rawVals);
         assertFalse("No move exists\n" + b,
                 Model.atLeastOneMoveExists(b));
     }

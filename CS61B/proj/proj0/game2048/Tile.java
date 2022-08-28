@@ -9,31 +9,31 @@ public class Tile {
      *  constructor is private, so all tiles are created by the
      *  factory methods create, move, and merge. */
     private Tile(int value, int col, int row) {
-        this.value = value;
-        this.row = row;
-        this.col = col;
-        this.next = null;
+        this._value = value;
+        this._row = row;
+        this._col = col;
+        this._next = null;
     }
 
     /** Return my current row. */
     public int row() {
-        return row;
+        return _row;
     }
 
     /** Return my current column. */
     public int col() {
-        return col;
+        return _col;
     }
 
     /** Return the value supplied to my constructor. */
     public int value() {
-        return value;
+        return _value;
     }
 
     /** Return my next state.  Before I am moved or merged, I am my
      *  own successor. */
     public Tile next() {
-        return next == null ? this : next;
+        return _next == null ? this : _next;
     }
 
     /** Return a new tile at (ROW, COL) with value VALUE. */
@@ -43,27 +43,27 @@ public class Tile {
 
     /** Return the result of moving me to (COL, ROW). */
     public Tile move(int col, int row) {
-        Tile result = new Tile(value, col, row);
-        next = result;
+        Tile result = new Tile(_value, col, row);
+        _next = result;
         return result;
     }
 
     /** Return the result of merging OTHERTILE with me after moving to
      *  (COL, ROW). */
     public Tile merge(int col, int row, Tile otherTile) {
-        assert value == otherTile.value();
-        next = otherTile.next = new Tile(2 * value, col, row);
-        return next;
+        assert _value == otherTile.value();
+        _next = otherTile._next = new Tile(2 * _value, col, row);
+        return _next;
     }
 
     /** Return the distance in rows or columns between me and my successor
      *  tile (0 if I have no successor). */
     public int distToNext() {
-        if (next == null) {
+        if (_next == null) {
             return 0;
         } else {
-            return Math.max(Math.abs(row - next.row()),
-                            Math.abs(col - next.col()));
+            return Math.max(Math.abs(_row - _next.row()),
+                            Math.abs(_col - _next.col()));
         }
     }
 
@@ -73,11 +73,11 @@ public class Tile {
     }
 
     /** My value. */
-    private final int value;
+    private final int _value;
 
     /** My last position on the board. */
-    private final int row, col;
+    private final int _row, _col;
 
     /** Successor tile: one I am moved to or merged with. */
-    private Tile next;
+    private Tile _next;
 }

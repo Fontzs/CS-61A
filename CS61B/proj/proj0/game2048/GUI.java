@@ -1,23 +1,18 @@
 package game2048;
 
-import ucb.gui2.TopLevel;
 import ucb.gui2.LayoutSpec;
-
-import java.util.Observable;
-import java.util.Observer;
-
-import java.util.concurrent.ArrayBlockingQueue;
+import ucb.gui2.TopLevel;
 
 import java.awt.event.KeyEvent;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.concurrent.ArrayBlockingQueue;
 
 
 /** The GUI controller for a 2048 board and buttons.
  *  @author P. N. Hilfinger
  */
 class GUI extends TopLevel implements Observer {
-
-    /** Minimum size of board in pixels. */
-    private static final int MIN_SIZE = 500;
 
     /** A new window with given TITLE providing a view of MODEL. */
     GUI(String title, Model model) {
@@ -57,7 +52,7 @@ class GUI extends TopLevel implements Observer {
     /** Respond to the user pressing key E by queuing the key on our
      *  queue of pending keys.*/
     public void keyPressed(String unused, KeyEvent e) {
-        _pendingKeys.offer(e.getKeyText(e.getKeyCode()));
+        _pendingKeys.offer(e.getKeyCode() + "");
     }
 
     /** Return the next pending event, waiting for it as necessary.
@@ -70,6 +65,20 @@ class GUI extends TopLevel implements Observer {
         } catch (InterruptedException excp) {
             throw new Error("unexpected interrupt");
         }
+    }
+
+    /** Return which direction arrow was pressed. */
+    String getKey() {
+        String command = readKey();
+        switch (command) {
+            case "↑" -> command = "Up";
+            case "→" -> command = "Right";
+            case "↓" -> command = "Down";
+            case "←" -> command = "Left";
+            default -> {}
+        }
+
+        return command;
     }
 
     /** Set the current score being displayed to SCORE and the current
@@ -89,12 +98,13 @@ class GUI extends TopLevel implements Observer {
     }
 
     /** The board widget. */
-    private BoardWidget _widget;
+    private final BoardWidget _widget;
+
     /** The game model being viewed. */
-    private Model _model;
+    private final Model _model;
 
     /** Queue of pending key presses. */
-    private ArrayBlockingQueue<String> _pendingKeys =
+    private final ArrayBlockingQueue<String> _pendingKeys =
         new ArrayBlockingQueue<>(5);
 
 }
