@@ -5,9 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3eaa1c89-d36e-45ac-b192-91ba48d61918" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game2048/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/game2048/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/proj0.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/ants.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/ants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/00.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/00.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/01.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/01.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/02.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/02.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/03.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/03.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/04.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/04.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/05.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/05.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/06.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/06.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/07.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/07.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/08.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/08.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/08a.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/08a.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/08b.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/08b.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/08c.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/08c.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/09.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/09.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/10.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/10.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/11.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/11.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/12.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/12.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/EC.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/EC.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/optional1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/optional1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/optional2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/optional2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +154,7 @@
       <updated>1661658867827</updated>
       <workItem from="1661658869058" duration="4167000" />
       <workItem from="1661670619694" duration="8927000" />
+      <workItem from="1661786089913" duration="663000" />
     </task>
     <servers />
   </component>
