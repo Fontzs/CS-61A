@@ -1,6 +1,6 @@
 package game2048;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class TestUtils {
 
@@ -39,7 +39,7 @@ public class TestUtils {
      *  @param values - a 2D array of integers describing the expected board a
      *               "0" element represents a null Tile.
      * @param score - what score the model should have.
-     * @param maxScore - maximum score so far
+     * @param maxScore
      * @param prevBoard - what the board looked like before this move.
      * @param currMove - the Side that we tilted towards.
      */
@@ -50,7 +50,25 @@ public class TestUtils {
         String errMsg = String.format("Board incorrect. Before tilting towards"
                         + " %s, your board looked like:%s%nAfter the call to"
                         + " tilt, we expected:%s%nBut your board looks like:%s.",
-                currMove, prevBoard, expected, model.toString());
+                currMove, prevBoard, expected.toString(), model.toString());
         assertEquals(errMsg, expected, model);
+    }
+
+    /**
+     * Checks that the returned boolean of a call to the tilt method is correct.
+     *
+     * @param s - the side that was tilted (the parameter to tilt).
+     * @param expected - what the expected return value is.
+     * @param actual - what the actual return value is.
+     */
+    public static void checkChanged(Side s, boolean expected, boolean actual) {
+        String changedErrMsg;
+        if (expected) {
+            changedErrMsg = boardShouldChange(s);
+            assertTrue(changedErrMsg, actual);
+        } else {
+            changedErrMsg = boardShouldNotChange(s);
+            assertFalse(changedErrMsg, actual);
+        }
     }
 }

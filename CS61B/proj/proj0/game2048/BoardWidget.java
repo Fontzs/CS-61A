@@ -2,11 +2,17 @@ package game2048;
 
 import ucb.gui2.Pad;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static java.lang.Math.*;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.FontMetrics;
+
+import static java.lang.Math.max;
+import static java.lang.Math.abs;
+import static java.lang.Math.round;
 
 /** A widget that displays a 2048 board.
  *  @author P. N. Hilfinger
@@ -82,7 +88,7 @@ class BoardWidget extends Pad {
                             new Color[] { new Color(tileData[1]),
                                           new Color(tileData[2]) });
         }
-    }
+    };
 
     /** A graphical representation of a 2048 board with SIZE rows and
      *  columns. */
@@ -93,8 +99,20 @@ class BoardWidget extends Pad {
         setPreferredSize(_boardSide, _boardSide);
     }
 
-    /** Render board on G. */
+    /** Clear all tiles from the board. */
+    synchronized void clear() {
+        _tiles.clear();
+        repaint();
+    }
+
+    /** Indicate that "GAME OVER" label should be displayed. */
+    synchronized void markEnd() {
+        _end = true;
+        repaint();
+    }
+
     @Override
+    /** Render board on G. */
     public synchronized void paintComponent(Graphics2D g) {
         g.setColor(EMPTY_SQUARE_COLOR);
         g.fillRect(0, 0, _boardSide, _boardSide);
@@ -123,8 +141,8 @@ class BoardWidget extends Pad {
             row0 = tile.row(),
             col1 = tile.next().col(),
             row1 = tile.next().row();
-        int dcol = Integer.compare(col1, col0),
-            drow = Integer.compare(row1, row0);
+        int dcol = col0 < col1 ? 1 : col0 == col1 ? 0 : -1,
+            drow = row0 < row1 ? 1 : row0 == row1 ? 0 : -1;
 
         float vcol, vrow;
         if (_distMoved >= max(abs(col0 - col1), abs(row0 - row1))) {
@@ -180,7 +198,8 @@ class BoardWidget extends Pad {
     /** Return the list of all tiles in NEXTTILES that are newly
      *  created or the result of merging of current tiles. */
     private ArrayList<Tile> newTiles(ArrayList<Tile> nextTiles) {
-        ArrayList<Tile> bloomers = new ArrayList<>(nextTiles);
+        ArrayList<Tile> bloomers = new ArrayList<>();
+        bloomers.addAll(nextTiles);
         for (Tile tile : _tiles) {
             if (tile.next().value() == tile.value()) {
                 bloomers.remove(tile.next());
@@ -261,8 +280,7 @@ class BoardWidget extends Pad {
     private final int _size;
 
     /** Length (in pixels) of the side of the board. */
-    private final int _boardSide;
-
+    private int _boardSide;
     /** True iff "GAME OVER" message is being displayed. */
     private boolean _end;
 }

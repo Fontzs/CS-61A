@@ -1,20 +1,18 @@
 package game2048;
-
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /** Tests of the Model class.
  *
- * These tests will cover all the things you've written together. You
+ * These tests will cover all of the things you've written together. You
  * shouldn't try to pass these tests until every other Test file passes.
  *
  * @author Omar Khan
  */
 public class TestModel extends TestUtils {
 
-    /*
+    /**
      * ******************
      * *  TESTING TILT  *
      * ******************
@@ -23,8 +21,8 @@ public class TestModel extends TestUtils {
      * method.
      */
 
-    /** Checks that the right two pieces merge when 3 adjacent pieces have same value. */
     @Test
+    /** Checks right two pieces merge when 3 adjacent pieces have same value. */
     public void testTripleMerge1() {
         int[][] before = new int[][]{
                 {2, 0, 0, 0},
@@ -41,12 +39,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.NORTH);
+        boolean changed = model.tilt(Side.NORTH);
+        checkChanged(Side.NORTH, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.NORTH);
     }
 
-    /** Checks that the right two pieces merge when 3 adjacent pieces have same value. */
     @Test
+    /** Checks right two pieces merge when 3 adjacent pieces have same value. */
     public void testTripleMerge2() {
         int[][] before = new int[][]{
                 {2, 0, 0, 0},
@@ -63,12 +62,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.SOUTH);
+        boolean changed = model.tilt(Side.SOUTH);
+        checkChanged(Side.SOUTH, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.SOUTH);
     }
 
-    /** Checks two adjacent merges work. */
     @Test
+    /** Checks two adjacent merges work. */
     public void testQuadrupleMerge() {
         int[][] before = new int[][]{
                 {0, 0, 0, 2},
@@ -85,12 +85,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.NORTH);
+        boolean changed = model.tilt(Side.NORTH);
+        checkChanged(Side.NORTH, true, changed);
         checkModel(after, 8, 0, prevBoard, Side.NORTH);
     }
 
-    /** Checks that a tile only merges once per tilt. */
     @Test
+    /** Checks that a tile only merges once per tilt. */
     public void testSingleMergeUp() {
         int[][] before = new int[][]{
                 {2, 0, 0, 0},
@@ -106,12 +107,13 @@ public class TestModel extends TestUtils {
         };
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.NORTH);
+        boolean changed = model.tilt(Side.NORTH);
+        checkChanged(Side.NORTH, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.NORTH);
     }
 
-    /** Checks that a tile only merges once per tilt. */
     @Test
+    /** Checks that a tile only merges once per tilt. */
     public void testSingleMergeSouth() {
         int[][] before = new int[][]{
                 {4, 0, 0, 0},
@@ -127,12 +129,13 @@ public class TestModel extends TestUtils {
         };
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.SOUTH);
+        boolean changed = model.tilt(Side.SOUTH);
+        checkChanged(Side.SOUTH, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.SOUTH);
     }
 
-    /** Checks that a tile only merges once per tilt. */
     @Test
+    /** Checks that a tile only merges once per tilt. */
     public void testSingleMergeEast() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -148,12 +151,13 @@ public class TestModel extends TestUtils {
         };
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.EAST);
+        boolean changed = model.tilt(Side.EAST);
+        checkChanged(Side.EAST, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.EAST);
     }
 
-    /** Checks that a tile only merges once per tilt. */
     @Test
+    /** Checks that a tile only merges once per tilt. */
     public void testSingleMergeWest() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -169,12 +173,13 @@ public class TestModel extends TestUtils {
         };
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.WEST);
+        boolean changed = model.tilt(Side.WEST);
+        checkChanged(Side.WEST, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.WEST);
     }
 
-    /** Checks that a tilt that causes no change returns false. */
     @Test
+    /** Checks that a tilt that causes no change returns false. */
     public void testNoMove() {
         int[][] before = new int[][]{
                 {2, 0, 2, 2},
@@ -182,21 +187,17 @@ public class TestModel extends TestUtils {
                 {0, 0, 0, 0},
                 {0, 0, 0, 0},
         };
-        int[][] after = new int[][]{
-                {2, 0, 2, 2},
-                {0, 0, 0, 0},
-                {0, 0, 0, 0},
-                {0, 0, 0, 0},
-        };
+        int[][] after = before;
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.NORTH);
+        boolean changed = model.tilt(Side.NORTH);
+        checkChanged(Side.NORTH, false, changed);
         checkModel(after, 0, 0, prevBoard, Side.NORTH);
     }
 
-    /** Move tiles up (no merging). */
     @Test
+    /** Move tiles up (no merging). */
     public void testUpNoMerge() {
         int[][] before = new int[][]{
                 {0, 0, 4, 0},
@@ -213,12 +214,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.NORTH);
+        boolean changed = model.tilt(Side.NORTH);
+        checkChanged(Side.NORTH, true, changed);
         checkModel(after, 0, 0, prevBoard, Side.NORTH);
     }
 
-    /** Move adjacent tiles up (no merging). */
     @Test
+    /** Move adjacent tiles up (no merging). */
     public void testUpAdjacentNoMerge() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -235,12 +237,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.NORTH);
+        boolean changed = model.tilt(Side.NORTH);
+        checkChanged(Side.NORTH, true, changed);
         checkModel(after, 0, 0, prevBoard, Side.NORTH);
     }
 
-    /** Move non-adjacent tiles up (no merging). */
     @Test
+    /** Move non-adjacent tiles up (no merging). */
     public void testUpNonAdjacentNoMerge1() {
         int[][] before = new int[][]{
                 {0, 0, 4, 0},
@@ -257,12 +260,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.NORTH);
+        boolean changed = model.tilt(Side.NORTH);
+        checkChanged(Side.NORTH, true, changed);
         checkModel(after, 0, 0, prevBoard, Side.NORTH);
     }
 
-    /** Move non-adjacent tiles up (no merging); case 2: both tiles move. */
     @Test
+    /** Move non-adjacent tiles up (no merging); case 2: both tiles move. */
     public void testMoveUpNonAdjacentNoMerge2() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -279,12 +283,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.NORTH);
+        boolean changed = model.tilt(Side.NORTH);
+        checkChanged(Side.NORTH, true, changed);
         checkModel(after, 0, 0, prevBoard, Side.NORTH);
     }
 
-    /** Merge adjacent tiles up. */
     @Test
+    /** Merge adjacent tiles up. */
     public void testUpAdjacentMerge() {
         int[][] before = new int[][]{
                 {0, 0, 2, 0},
@@ -301,12 +306,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.NORTH);
+        boolean changed = model.tilt(Side.NORTH);
+        checkChanged(Side.NORTH, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.NORTH);
     }
 
-    /** Merge non-adjacent tiles up. */
     @Test
+    /** Merge non-adjacent tiles up. */
     public void testUpNonAdjacentMerge() {
         int[][] before = new int[][]{
                 {0, 0, 2, 0},
@@ -323,12 +329,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.NORTH);
+        boolean changed = model.tilt(Side.NORTH);
+        checkChanged(Side.NORTH, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.NORTH);
     }
 
-    /** Move and merge adjacent tiles up. */
     @Test
+    /** Move and merge adjacent tiles up. */
     public void testUpAdjacentMergeMove() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -345,12 +352,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.NORTH);
+        boolean changed = model.tilt(Side.NORTH);
+        checkChanged(Side.NORTH, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.NORTH);
     }
 
-    /** Move tiles right (no merging). */
     @Test
+    /** Move tiles right (no merging). */
     public void testRightNoMerge() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -367,12 +375,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.EAST);
+        boolean changed = model.tilt(Side.EAST);
+        checkChanged(Side.EAST, true, changed);
         checkModel(after, 0, 0, prevBoard, Side.EAST);
     }
 
-    /** Move adjacent tiles right (no merging). */
     @Test
+    /** Move adjacent tiles right (no merging). */
     public void testRightAdjacentNoMerge() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -389,12 +398,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.EAST);
+        boolean changed = model.tilt(Side.EAST);
+        checkChanged(Side.EAST, true, changed);
         checkModel(after, 0, 0, prevBoard, Side.EAST);
     }
 
-    /** Move adjacent tiles right (no merging). */
     @Test
+    /** Move adjacent tiles right (no merging). */
     public void testRightNonAdjacentNoMerge1() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -411,12 +421,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.EAST);
+        boolean changed = model.tilt(Side.EAST);
+        checkChanged(Side.EAST, true, changed);
         checkModel(after, 0, 0, prevBoard, Side.EAST);
     }
 
-    /** Move adjacent tiles right (no merging); case 2: both tiles move. */
     @Test
+    /** Move adjacent tiles right (no merging); case 2: both tiles move. */
     public void testRightNonAdjacentNoMerge2() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -433,12 +444,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.EAST);
+        boolean changed = model.tilt(Side.EAST);
+        checkChanged(Side.EAST, true, changed);
         checkModel(after, 0, 0, prevBoard, Side.EAST);
     }
 
-    /** Merge adjacent tiles right. */
     @Test
+    /** Merge adjacent tiles right. */
     public void testRightAdjacentMerge() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -455,12 +467,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.EAST);
+        boolean changed = model.tilt(Side.EAST);
+        checkChanged(Side.EAST, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.EAST);
     }
 
-    /** Merge non-adjacent tiles right. */
     @Test
+    /** Merge non-adjacent tiles right. */
     public void testRightNonAdjacentMerge() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -477,12 +490,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.EAST);
+        boolean changed = model.tilt(Side.EAST);
+        checkChanged(Side.EAST, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.EAST);
     }
 
-    /** Move and merge adjacent tiles right. */
     @Test
+    /** Move and merge adjacent tiles right. */
     public void testRightAdjacentMergeMove() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -499,12 +513,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.EAST);
+        boolean changed = model.tilt(Side.EAST);
+        checkChanged(Side.EAST, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.EAST);
     }
 
-    /** Move and merge non-adjacent tiles right. */
     @Test
+    /** Move and merge non-adjacent tiles right. */
     public void testRightNonAdjacentMergeMove() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -521,12 +536,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.EAST);
+        boolean changed = model.tilt(Side.EAST);
+        checkChanged(Side.EAST, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.EAST);
     }
 
-    /** Move tiles down (no merging). */
     @Test
+    /** Move tiles down (no merging). */
     public void testDownNoMerge() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -543,12 +559,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.SOUTH);
+        boolean changed = model.tilt(Side.SOUTH);
+        checkChanged(Side.SOUTH, true, changed);
         checkModel(after, 0, 0, prevBoard, Side.SOUTH);
     }
 
-    /** Move adjacent tiles down (no merging). */
     @Test
+    /** Move adjacent tiles down (no merging). */
     public void testDownAdjacentNoMerge() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -565,12 +582,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.SOUTH);
+        boolean changed = model.tilt(Side.SOUTH);
+        checkChanged(Side.SOUTH, true, changed);
         checkModel(after, 0, 0, prevBoard, Side.SOUTH);
     }
 
-    /** Move non-adjacent tiles down (no merging). */
     @Test
+    /** Move non-adjacent tiles down (no merging). */
     public void testDownNonAdjacentNoMerge1() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -587,12 +605,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.SOUTH);
+        boolean changed = model.tilt(Side.SOUTH);
+        checkChanged(Side.SOUTH, true, changed);
         checkModel(after, 0, 0, prevBoard, Side.SOUTH);
     }
 
-    /** Merge adjacent tiles down. */
     @Test
+    /** Merge adjacent tiles down. */
     public void testDownAdjacentMerge() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -609,12 +628,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.SOUTH);
+        boolean changed = model.tilt(Side.SOUTH);
+        checkChanged(Side.SOUTH, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.SOUTH);
     }
 
-    /** Merge non-adjacent tiles down. */
     @Test
+    /** Merge non-adjacent tiles down. */
     public void testDownNonAdjacentMerge() {
         int[][] before = new int[][]{
                 {0, 2, 0, 0},
@@ -631,12 +651,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.SOUTH);
+        boolean changed = model.tilt(Side.SOUTH);
+        checkChanged(Side.SOUTH, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.SOUTH);
     }
 
-    /** Move and merge adjacent tiles down. */
     @Test
+    /** Move and merge adjacent tiles down. */
     public void testDownAdjacentMergeMove() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -653,12 +674,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.SOUTH);
+        boolean changed = model.tilt(Side.SOUTH);
+        checkChanged(Side.SOUTH, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.SOUTH);
     }
 
-    /** Move and merge non-adjacent tiles down. */
     @Test
+    /** Move and merge non-adjacent tiles down. */
     public void testDownNonAdjacentMergeMove() {
         int[][] before = new int[][]{
                 {0, 2, 0, 0},
@@ -675,12 +697,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.SOUTH);
+        boolean changed = model.tilt(Side.SOUTH);
+        checkChanged(Side.SOUTH, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.SOUTH);
     }
 
-    /** Move tiles left (no merging). */
     @Test
+    /** Move tiles left (no merging). */
     public void testLeftNoMerge() {
         int[][] before = new int[][]{
                 {4, 0, 0, 0},
@@ -697,12 +720,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.WEST);
+        boolean changed = model.tilt(Side.WEST);
+        checkChanged(Side.WEST, true, changed);
         checkModel(after, 0, 0, prevBoard, Side.WEST);
     }
 
-    /** Move adjacent tiles left (no merging). */
     @Test
+    /** Move adjacent tiles left (no merging). */
     public void testLeftAdjacentNoMerge() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -719,12 +743,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.WEST);
+        boolean changed = model.tilt(Side.WEST);
+        checkChanged(Side.WEST, true, changed);
         checkModel(after, 0, 0, prevBoard, Side.WEST);
     }
 
-    /** Move non-adjacent tiles left (no merging). */
     @Test
+    /** Move non-adjacent tiles left (no merging). */
     public void testLeftNonAdjacentNoMerge1() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -741,12 +766,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.WEST);
+        boolean changed = model.tilt(Side.WEST);
+        checkChanged(Side.WEST, true, changed);
         checkModel(after, 0, 0, prevBoard, Side.WEST);
     }
 
-    /** Merge adjacent tiles left. */
     @Test
+    /** Merge adjacent tiles left. */
     public void testLeftAdjacentMerge() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -763,12 +789,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.WEST);
+        boolean changed = model.tilt(Side.WEST);
+        checkChanged(Side.WEST, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.WEST);
     }
 
-    /** Merge non-adjacent tiles left. */
     @Test
+    /** Merge non-adjacent tiles left. */
     public void testLeftNonAdjacentMerge() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -785,12 +812,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.WEST);
+        boolean changed = model.tilt(Side.WEST);
+        checkChanged(Side.WEST, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.WEST);
     }
 
-    /** Move and merge adjacent tiles left. */
     @Test
+    /** Move and merge adjacent tiles left. */
     public void testLeftAdjacentMergeMove() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -807,12 +835,13 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.WEST);
+        boolean changed = model.tilt(Side.WEST);
+        checkChanged(Side.WEST, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.WEST);
     }
 
-    /** Move and merge non-adjacent tiles left. */
     @Test
+    /** Move and merge non-adjacent tiles left. */
     public void testLeftNonAdjacentMergeMove() {
         int[][] before = new int[][]{
                 {0, 0, 0, 0},
@@ -829,11 +858,12 @@ public class TestModel extends TestUtils {
 
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
-        model.tilt(Side.WEST);
+        boolean changed = model.tilt(Side.WEST);
+        checkChanged(Side.WEST, true, changed);
         checkModel(after, 4, 0, prevBoard, Side.WEST);
     }
 
-    /*
+    /**
      * ***********************
      * *  TESTING GAME OVER  *
      * ***********************
@@ -842,8 +872,8 @@ public class TestModel extends TestUtils {
      * method.
      */
 
-    /** No tilt can cause a change. */
     @Test
+    /** No tilt can cause a change. */
     public void testGameOverNoChange1() {
         int[][] board = {
                 {2, 4, 2, 4},
@@ -857,8 +887,8 @@ public class TestModel extends TestUtils {
                 + model, model.gameOver());
     }
 
-    /** The MAX_PIECE (2048) tile is on the board. */
     @Test
+    /** The MAX_PIECE (2048) tile is on the board. */
     public void testGameOverMaxPiece() {
         int[][] board = {
                 {0, 0, 0, 0},
@@ -872,8 +902,8 @@ public class TestModel extends TestUtils {
                 + model, model.gameOver());
     }
 
-    /** No tilt can cause a change. */
     @Test
+    /** No tilt can cause a change. */
     public void testGameOverNoChange2() {
         int[][] board = {
                 {128, 4, 2, 4},
@@ -887,8 +917,8 @@ public class TestModel extends TestUtils {
                 + model, model.gameOver());
     }
 
-    /** Any tilt will change the board. */
     @Test
+    /** Any tilt will change the board. */
     public void testGameNotOver1() {
         int[][] board = {
                 {2, 4, 2, 2},
@@ -901,8 +931,8 @@ public class TestModel extends TestUtils {
                 + model, model.gameOver());
     }
 
-    /** A tilt right or down will change the board. */
     @Test
+    /** A tilt right or down will change the board. */
     public void testGameNotOver2() {
         int[][] board = {
                 {2, 4, 2, 4},
@@ -915,7 +945,7 @@ public class TestModel extends TestUtils {
                 + " in a change:" + model, model.gameOver());
     }
 
-    /*
+    /**
      * *************************
      * *  MULTIPLE MOVE TESTS  *
      * *************************
@@ -925,8 +955,8 @@ public class TestModel extends TestUtils {
      * tests to pass until all of the above tests pass.
      */
 
-    /** Will test multiple moves on the Model. */
     @Test
+    /** Will test multiple moves on the Model. */
     public void testMultipleMoves1() {
         int[][] board = new int[][]{
                 {0, 0, 0, 0},
@@ -936,13 +966,14 @@ public class TestModel extends TestUtils {
         };
 
         String prevBoard;
+        String currBoard;
         Side currMove;
         Tile toAdd;
         int totalScore = 0;
 
         updateModel(board, 0, 0, false);
 
-        prevBoard = model.toString();
+        prevBoard = board.toString();
         currMove = Side.EAST;
         model.tilt(currMove);
         checkModel(new int[][]{
@@ -1004,8 +1035,8 @@ public class TestModel extends TestUtils {
         }, totalScore, 0, prevBoard, currMove);
     }
 
-    /** Will test multiple moves on the Model that end the game. */
     @Test
+    /** Will test multiple moves on the Model that end the game. */
     public void testMultipleMoves2() {
         int[][] board = new int[][]{
                 {0, 0, 0, 0},
@@ -1015,6 +1046,7 @@ public class TestModel extends TestUtils {
         };
 
         String prevBoard;
+        String currBoard;
         Side currMove;
         Tile toAdd;
         int totalScore = 0;
@@ -1061,8 +1093,8 @@ public class TestModel extends TestUtils {
         }, totalScore, totalScore, prevBoard, currMove);
     }
 
-    /** Will test multiple moves on the Model. */
     @Test
+    /** Will test multiple moves on the Model. */
     public void testMultipleMoves3() {
         int[][] board = new int[][]{
                 {0, 2, 2, 0},
@@ -1072,6 +1104,7 @@ public class TestModel extends TestUtils {
         };
 
         String prevBoard;
+        String currBoard;
         Side currMove;
         Tile toAdd;
         int totalScore = 0;

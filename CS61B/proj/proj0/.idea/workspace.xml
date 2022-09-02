@@ -4,28 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eaa1c89-d36e-45ac-b192-91ba48d61918" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/ants.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/ants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/00.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/00.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/01.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/01.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/02.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/02.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/03.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/03.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/04.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/04.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/05.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/05.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/06.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/06.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/07.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/07.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/08.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/08.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/08a.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/08a.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/08b.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/08b.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/08c.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/08c.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/09.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/09.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/10.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/10.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/11.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/11.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/12.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/12.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/EC.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/EC.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/optional1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/optional1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/optional2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/proj3-ants/tests/optional2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ee58bb3f-e5fe-4663-9de4-7ae1135b6dc4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../CS61A/proj/hog/.ok_history" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS61A/proj/hog/.ok_history" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,29 +18,24 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2Dy6EopbHJ6xfeaeuhpHRh9WiGa" />
+  <component name="ProjectId" id="2Djr5qmMqw3ZKkVrlFk2L0TOrPl" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/CS_EE_course/61-ABC/CS61B/library-fa22/xchart-3.8.1.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15234375&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
-}</component>
-  <component name="RunManager" selected="Application.Main">
+}]]></component>
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="game2048.Main" />
       <module name="proj0" />
@@ -74,95 +49,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestAtLeastOneMoveExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="proj0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="game2048.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="game2048" />
-      <option name="MAIN_CLASS_NAME" value="game2048.TestAtLeastOneMoveExists" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestMaxTileExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="proj0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="game2048.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="game2048" />
-      <option name="MAIN_CLASS_NAME" value="game2048.TestMaxTileExists" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestModel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="proj0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="game2048.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="game2048" />
-      <option name="MAIN_CLASS_NAME" value="game2048.TestModel" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestUpOnly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="proj0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="game2048.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="game2048" />
-      <option name="MAIN_CLASS_NAME" value="game2048.TestUpOnly" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.TestModel" />
-        <item itemvalue="JUnit.TestUpOnly" />
-        <item itemvalue="JUnit.TestAtLeastOneMoveExists" />
-        <item itemvalue="JUnit.TestMaxTileExists" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3eaa1c89-d36e-45ac-b192-91ba48d61918" name="Changes" comment="" />
-      <created>1661658867827</created>
+      <changelist id="ee58bb3f-e5fe-4663-9de4-7ae1135b6dc4" name="Changes" comment="" />
+      <created>1661223156286</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1661658867827</updated>
-      <workItem from="1661658869058" duration="4167000" />
-      <workItem from="1661670619694" duration="8927000" />
-      <workItem from="1661786089913" duration="663000" />
+      <updated>1661223156286</updated>
+      <workItem from="1661223157746" duration="3019000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

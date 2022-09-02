@@ -5,17 +5,17 @@ import java.util.Observable;
 
 
 /** The state of a game of 2048.
- *  @author Ingcheon
+ *  @author TODO: YOUR NAME HERE
  */
 public class Model extends Observable {
     /** Current contents of the board. */
-    private final Board _board;
+    private Board board;
     /** Current score. */
-    private int _score;
+    private int score;
     /** Maximum score so far.  Updated when game ends. */
-    private int _maxScore;
+    private int maxScore;
     /** True iff game is ended. */
-    private boolean _gameOver;
+    private boolean gameOver;
 
     /* Coordinate System: column C, row R of the board (where row 0,
      * column 0 is the lower-left corner of the board) will correspond
@@ -28,77 +28,68 @@ public class Model extends Observable {
     /** A new 2048 game on a board of size SIZE with no pieces
      *  and score 0. */
     public Model(int size) {
-        _board = new Board(size);
-        _score = _maxScore = 0;
-        _gameOver = false;
+        board = new Board(size);
+        score = maxScore = 0;
+        gameOver = false;
     }
 
     /** A new 2048 game where RAWVALUES contain the values of the tiles
      * (0 if null). VALUES is indexed by (row, col) with (0, 0) corresponding
      * to the bottom-left corner. Used for testing purposes. */
     public Model(int[][] rawValues, int score, int maxScore, boolean gameOver) {
-        _board = new Board(rawValues);
-        this._score = score;
-        this._maxScore = maxScore;
-        this._gameOver = gameOver;
-    }
-
-    /** Same as above, but gameOver is false. Used for testing purposes. */
-    public Model(int[][] rawValues, int score, int maxScore) {
-        this(rawValues, score, maxScore, false);
+        int size = rawValues.length;
+        board = new Board(rawValues, score);
+        this.score = score;
+        this.maxScore = maxScore;
+        this.gameOver = gameOver;
     }
 
     /** Return the current Tile at (COL, ROW), where 0 <= ROW < size(),
      *  0 <= COL < size(). Returns null if there is no tile there.
      *  Used for testing. Should be deprecated and removed.
-     * */
+     *  */
     public Tile tile(int col, int row) {
-        return _board.tile(col, row);
+        return board.tile(col, row);
     }
 
     /** Return the number of squares on one side of the board.
      *  Used for testing. Should be deprecated and removed. */
     public int size() {
-        return _board.size();
+        return board.size();
     }
 
     /** Return true iff the game is over (there are no moves, or
      *  there is a tile with value 2048 on the board). */
     public boolean gameOver() {
         checkGameOver();
-        if (_gameOver) {
-            _maxScore = Math.max(_score, _maxScore);
+        if (gameOver) {
+            maxScore = Math.max(score, maxScore);
         }
-        return _gameOver;
+        return gameOver;
     }
 
     /** Return the current score. */
     public int score() {
-        return _score;
+        return score;
     }
 
     /** Return the current maximum game score (updated at end of game). */
     public int maxScore() {
-        return _maxScore;
+        return maxScore;
     }
 
     /** Clear the board to empty and reset the score. */
     public void clear() {
-        _score = 0;
-        _gameOver = false;
-        _board.clear();
-        setChanged();
-    }
-
-    /** Allow initial game board to announce a hot start to the GUI. */
-    public void hotStartAnnounce() {
+        score = 0;
+        gameOver = false;
+        board.clear();
         setChanged();
     }
 
     /** Add TILE to the board. There must be no Tile currently at the
      *  same position. */
     public void addTile(Tile tile) {
-        _board.addTile(tile);
+        board.addTile(tile);
         checkGameOver();
         setChanged();
     }
@@ -114,42 +105,27 @@ public class Model extends Observable {
      * 3. When three adjacent tiles in the direction of motion have the same
      *    value, then the leading two tiles in the direction of motion merge,
      *    and the trailing tile does not.
-     */
-    public void tilt(Side side) {
-        // TODO: Fill in this function.
-        _board.setViewingPerspective(side);
-        for (int i = 0; i < _board.size(); i++){
-            int j = _board.size() - 1;
-            while (j >= 0){
-                int k = j - 1;
-                while(k >= 0 && _board.tile(i, k) == null){
-                    k--;
-                }
-                if(k < 0){
-                    break;
-                }
-                Tile t = _board.tile(i, k);
-                if(_board.tile(i, j) == null ||_board.tile(i, j).value() == t.value()){
-                    if(_board.move(i, j, t)) {
-                        _score += _board.tile(i, j).value();
-                        j -= 1;
-                    }
-                }else{
-                   _board.move(i, j - 1, t);
-                   j -= 1;
-                }
-            }
+     * */
+    public boolean tilt(Side side) {
+        boolean changed;
+        changed = false;
 
-        }
-        _board.setViewingPerspective(Side.NORTH);
+        // TODO: Modify this.board (and perhaps this.score) to account
+        // for the tilt to the Side SIDE. If the board changed, set the
+        // changed local variable to true.
+
         checkGameOver();
+        if (changed) {
+            setChanged();
+        }
+        return changed;
     }
 
     /** Checks if the game is over and sets the gameOver variable
      *  appropriately.
      */
     private void checkGameOver() {
-        _gameOver = checkGameOver(_board);
+        gameOver = checkGameOver(board);
     }
 
     /** Determine whether game is over. */
@@ -159,35 +135,19 @@ public class Model extends Observable {
 
     /** Returns true if at least one space on the Board is empty.
      *  Empty spaces are stored as null.
-     */
+     * */
     public static boolean emptySpaceExists(Board b) {
         // TODO: Fill in this function.
-        int length = b.size();
-        for(int i = 0; i < length; i++){
-            for(int j = 0; j < length; j++){
-                if (b.tile(i, j) == null){
-                    return true;
-                }
-            }
-        }
         return false;
     }
 
     /**
      * Returns true if any tile is equal to the maximum valid value.
-     * Maximum valid value is given by this.MAX_PIECE. Note that
+     * Maximum valid value is given by MAX_PIECE. Note that
      * given a Tile object t, we get its value with t.value().
      */
     public static boolean maxTileExists(Board b) {
         // TODO: Fill in this function.
-        int length = b.size();
-        for(int i = 0; i < length; i++){
-            for(int j = 0; j < length; j++){
-                if (b.tile(i, j) != null && b.tile(i, j).value() == MAX_PIECE){
-                    return true;
-                }
-            }
-        }
         return false;
     }
 
@@ -199,31 +159,12 @@ public class Model extends Observable {
      */
     public static boolean atLeastOneMoveExists(Board b) {
         // TODO: Fill in this function.
-        int len = b.size();
-
-        for(int i = 0; i < len; i++){
-            for(int j = 0; j < len; j++){
-                if(b.tile(i, j) == null)
-                    return true;
-                if(i + 1 < len){
-                    if (b.tile(i + 1, j ) == null || b.tile(i, j).value() == b.tile(i + 1, j).value())
-                        return true;
-                }
-                if(j + 1 < len){
-                    if (b.tile(i, j + 1) == null || b.tile(i, j).value() == b.tile(i , j + 1).value())
-                        return true;
-                }
-                }
-
-            }
-
-
-
         return false;
     }
 
-    /** Returns the model as a string, used for debugging. */
+
     @Override
+     /** Returns the model as a string, used for debugging. */
     public String toString() {
         Formatter out = new Formatter();
         out.format("%n[%n");
@@ -242,8 +183,8 @@ public class Model extends Observable {
         return out.toString();
     }
 
-    /** Returns whether two models are equal. */
     @Override
+    /** Returns whether two models are equal. */
     public boolean equals(Object o) {
         if (o == null) {
             return false;
@@ -254,8 +195,8 @@ public class Model extends Observable {
         }
     }
 
-    /** Returns hash code of Model’s string. */
     @Override
+    /** Returns hash code of Model’s string. */
     public int hashCode() {
         return toString().hashCode();
     }
