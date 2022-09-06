@@ -2,7 +2,7 @@
 
 My code is based on `22fall` version. 
 
-**To obey the policy, I set the repository private. **
+**To obey the policy, I set the repository private.**
 
 If you're not a Berkeley student, you could contact me at 2simple233@gmail.com to check the answers and exchange learning experiences with me.
 
