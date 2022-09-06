@@ -34,7 +34,9 @@ def scheme_eval(expr, env, _=None):  # Optional third argument is ignored
         return scheme_forms.SPECIAL_FORMS[first](rest, env)
     else:
         # BEGIN PROBLEM 3
-        "*** YOUR CODE HERE ***"
+        procedure = scheme_eval(first, env)
+        args = rest.map(lambda operand: scheme_eval(operand, env))
+        return scheme_apply(procedure, args, env)
         # END PROBLEM 3
 
 
@@ -43,17 +45,25 @@ def scheme_apply(procedure, args, env):
     Frame ENV, the current environment."""
     validate_procedure(procedure)
     if not isinstance(env, Frame):
-       assert False, "Not a Frame: {}".format(env)
+        assert False, "Not a Frame: {}".format(env)
     if isinstance(procedure, BuiltinProcedure):
         # BEGIN PROBLEM 2
-        "*** YOUR CODE HERE ***"
+        lst = []
+        p = args
+        while p != nil:
+            lst.append(p.first)
+            p = p.rest
+        if procedure.need_env:
+            lst.append(env)
+        args = lst
         # END PROBLEM 2
         try:
             # BEGIN PROBLEM 2
-            "*** YOUR CODE HERE ***"
+            return procedure.py_func(*args)
             # END PROBLEM 2
         except TypeError as err:
-            raise SchemeError('incorrect number of arguments: {0}'.format(procedure))
+            raise SchemeError(
+                'incorrect number of arguments: {0}'.format(procedure))
     elif isinstance(procedure, LambdaProcedure):
         # BEGIN PROBLEM 9
         "*** YOUR CODE HERE ***"
@@ -82,7 +92,8 @@ def eval_all(expressions, env):
     2
     """
     # BEGIN PROBLEM 6
-    return scheme_eval(expressions.first, env)  # replace this with lines of your own code
+    # replace this with lines of your own code
+    return scheme_eval(expressions.first, env)
     # END PROBLEM 6
 
 
