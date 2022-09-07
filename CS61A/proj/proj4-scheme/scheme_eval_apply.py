@@ -66,11 +66,13 @@ def scheme_apply(procedure, args, env):
                 'incorrect number of arguments: {0}'.format(procedure))
     elif isinstance(procedure, LambdaProcedure):
         # BEGIN PROBLEM 9
-        "*** YOUR CODE HERE ***"
+        child_frame = procedure.env.make_child_frame(procedure.formals, args)
+        return eval_all(procedure.body, child_frame)
         # END PROBLEM 9
     elif isinstance(procedure, MuProcedure):
         # BEGIN PROBLEM 11
-        "*** YOUR CODE HERE ***"
+        child_frame = env.make_child_frame(procedure.formals, args)
+        return eval_all(procedure.body, child_frame)
         # END PROBLEM 11
     else:
         assert False, "Unexpected procedure: {}".format(procedure)
@@ -93,7 +95,14 @@ def eval_all(expressions, env):
     """
     # BEGIN PROBLEM 6
     # replace this with lines of your own code
-    return scheme_eval(expressions.first, env)
+    if expressions == nil:
+        return
+    expr = expressions
+    while expr.rest != nil:
+        scheme_eval(expr.first, env)
+        expr = expr.rest
+    return scheme_eval(expr.first, env)
+
     # END PROBLEM 6
 
 
@@ -131,7 +140,9 @@ def optimize_tail_calls(unoptimized_scheme_eval):
 
         result = Unevaluated(expr, env)
         # BEGIN PROBLEM EC
-        "*** YOUR CODE HERE ***"
+        while isinstance(result, Unevaluated):
+            result = unoptimized_scheme_eval(result.expr, result.env)
+        return result
         # END PROBLEM EC
     return optimized_eval
 

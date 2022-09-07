@@ -57,7 +57,12 @@ class Frame:
         if len(formals) != len(vals):
             raise SchemeError('Incorrect number of arguments to function call')
         # BEGIN PROBLEM 8
-        "*** YOUR CODE HERE ***"
+        fucker = Frame(self)
+        while formals is not nil:
+            fucker.define(formals.first, vals.first)
+            vals = vals.rest
+            formals = formals.rest
+        return fucker
         # END PROBLEM 8
 
 ##############
