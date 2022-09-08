@@ -19,40 +19,38 @@ The following solutions help me a lot when I got stuck. 🎉
 
 ### Labs
 
-- [x] [Lab 01: Variables and Functions, Control](https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab01)
-- [x] [Lab 02: Higher-Order Functions, Environment Diagrams](https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab02)
-- [x] [ Lab 03: Recursion, Tree Recursion](https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab03)
-- [x] [Lab 04: Sequences, Mutability, Object-Oriented Programming](https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab04)
-- [x] [Lab 05: Inheritance, Midterm Review](https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab05)
-- [x] [ Lab 06: Iterators, Generators](https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab06) 
-- [x] [Lab 07: Trees, Linked Lists](https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab08)
-- [x] [Lab 08: Scheme](https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab08)
-- [x] [Lab 09: Tail Calls, Interpreters](https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab09)
-- [x] [Lab 10: Scheme Data Abstraction](https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab10) 
-- [x] [Lab 11: Regular Expressions, SQL](https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab11)
-- [x] [Lab 12: Final Review](https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab12)
+- [x] Lab 01: Variables and Functions, Control
+- [x] Lab 02: Higher-Order Functions, Environment Diagrams
+- [x] Lab 03: Recursion, Tree Recursion
+- [x] Lab 04: Sequences, Mutability, Object-Oriented Programming
+- [x] Lab 05: Inheritance, Midterm Review
+- [x]  Lab 06: Iterators, Generators
+- [x] Lab 07: Trees, Linked Lists
+- [x] Lab 08: Scheme
+- [x] Lab 09: Tail Calls, Interpreters
+- [x] Lab 10: Scheme Data Abstraction
+- [x] Lab 11: Regular Expressions, SQL
+- [x] Lab 12: Final Review
 
 ###  HWs
 
-- [x] [HW 01: Variables and Functions, Control](https://github.com/Fontzs/CS-61A-22su/tree/master/hw/hw01)
-- [x] [HW 02: Higher-Order Functions](https://github.com/Fontzs/CS-61A-22su/tree/master/hw/hw02) 
-- [x] [HW 03: Recursion, Tree Recursion](https://github.com/Fontzs/CS-61A-22su/tree/master/hw/hw03)
-- [x] [HW 04: Sequences, Mutability, Object-Oriented Programming](https://github.com/Fontzs/CS-61A-22su/tree/master/hw/hw04)
-- [x] [ HW 05: Trees, Linked Lists](https://github.com/Fontzs/CS-61A-22su/tree/master/hw/hw05)
-- [x] [HW 06: Scheme, Scheme Lists, Tail Calls](https://github.com/Fontzs/CS-61A-22su/tree/master/hw/hw06)
-- [x] [HW 07: Scheme Data Abstraction, Regular Expressions, SQL](https://github.com/Fontzs/CS-61A-22su/tree/master/hw/hw07) 
+- [x] HW 01: Variables and Functions, Control
+- [x] HW 02: Higher-Order Functions
+- [x] HW 03: Recursion, Tree Recursion
+- [x] HW 04: Sequences, Mutability, Object-Oriented Programming
+- [x] HW 05: Trees, Linked Lists
+- [x] HW 06: Scheme, Scheme Lists, Tail Calls
+- [x] HW 07: Scheme Data Abstraction, Regular Expressions, SQL
 
 
 
 ### Projects
 
-- [x] [proj 00: lambdaing](https://github.com/Fontzs/CS-61A-22su/tree/master/proj/proj0-lambdaing)
-- [x] [proj 01: hog](https://github.com/Fontzs/CS-61A-22su/tree/master/proj/proj1-hog)
-- [x] [proj 02: cat](https://github.com/Fontzs/CS-61A-22su/tree/master/proj/proj2-cats)
-- [x] [proj 03: ant](https://github.com/Fontzs/CS-61A-22su/tree/master/proj/proj3-ants)
-- [ ] [proj 04:scheme](https://github.com/Fontzs/CS-61A-22su/tree/master/proj/proj4-scheme)
-
-### Caution
+- [x] proj 00: lambdaing
+- [x] proj 01: hog
+- [x] proj 02: cat
+- [x] proj 03: ant
+- [ ] proj 04:scheme
 
 I don't really understand the fourth project, it should be reviewed after I learn compiler.
 
