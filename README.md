@@ -20,7 +20,7 @@ The following solutions help me a lot when I got stuck. 🎉
 ### Labs
 
 - [x] [Lab 01: Variables and Functions, Control](https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab01)
-- [x] [Lab 02: Higher-Order Functions, Environment Diagrams] (https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab02)
+- [x] [Lab 02: Higher-Order Functions, Environment Diagrams](https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab02)
 - [x] [ Lab 03: Recursion, Tree Recursion](https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab03)
 - [x] [Lab 04: Sequences, Mutability, Object-Oriented Programming](https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab04)
 - [x] [Lab 05: Inheritance, Midterm Review](https://github.com/Fontzs/CS-61A-22su/tree/master/lab/lab05)
